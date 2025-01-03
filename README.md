@@ -44,12 +44,6 @@ Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, m
 
 <p></p>
 
-<h2 id="demo">🏠 Halaman Demo</h2>
-
-Halaman demo dapat anda akses di https://sppie.herokuapp.com/ perlu diketahui server dapat tiba tiba mati atau website tidak dapat diakses, oleh karena itu baiknya anda coba di local
-
-<p></p>
-
 <h2 id="syarat">💾 Prasyarat yang Diperlukan</h2>
 
 Berikut adalah daftar layanan dan aplikasi yang wajib dan diperlukan selama anda menjalankan aplikasi sppie jika anda belum menginstall nya maka disarankan untuk menginstall nya terlebih dahulu
@@ -99,9 +93,5 @@ Berhubung Project ini saya selesaikan sendiri, namun banyak fitur dan banyak hal
 
 <h2 id="lisensi">📝 Lisensi</h2>
 
-- Copyright © 2022 SYAUQIZAIDAN KHAIRAN KHALAF
+- Copyright © 2022 Syauqizaidan Khairan Khalaf
 - Sppie adalah aplikasi web open-source yang berlisensi dibawah lisensi MIT
-
----
-
-**<p align="center">Made with ❤️ by SYAUQIZAIDAN KHAIRAN KHALAF</p>**
