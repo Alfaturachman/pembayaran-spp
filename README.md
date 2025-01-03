@@ -50,7 +50,7 @@ Untuk menjalankan aplikasi atau web ini kamu harus install XAMPP atau web server
 
 ```bash
 # Clone repository ini atau download di
-$ git clone https://github.com/syauqi/sppie.git
+$ git clone https://github.com/Alfaturachman/pembayaran-spp.git
 
 # Kemudian jalankan command composer install, ini akan menginstall resources yang laravel butuhkan
 $ composer install
