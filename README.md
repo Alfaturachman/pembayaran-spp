@@ -10,15 +10,6 @@
 <p></p>
 
 <p align="center">
-	<img src="https://img.shields.io/github/issues/syauqi/sppie?style=flat-square">
-	<img src="https://img.shields.io/github/stars/syauqi/sppie?style=flat-square"> 
-	<img src="https://img.shields.io/github/forks/syauqi/sppie?style=flat-square">
-	<img src="https://img.shields.io/github/license/syauqi/sppie?style=flat-square">
-	<img src="https://img.shields.io/badge/maintained%3F-no-red.svg?style=flat-square">
-	<img src="https://img.shields.io/github/followers/syauqi.svg?style=flat-square&label=followers">
-</p>
-
-<p align="center">
   <a href="#tentang">Tentang Project</a> •
   <a href="#fitur">Fitur</a> •
   <a href="#download">Download & Install</a> •
