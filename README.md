@@ -12,7 +12,6 @@
 <p align="center">
   <a href="#tentang">Tentang Project</a> •
   <a href="#fitur">Fitur</a> •
-<!--   <a href="#download">Download & Install</a> • -->
   <a href="#lisensi">Lisensi</a>
 </p>
 
@@ -31,24 +30,6 @@ Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, m
 - Pengelolaan Data SPP
   - Siswa dapat melihat riwayat transaksi pembayaran SPP
   - Operator dapat membuat transaksi dan mencetak pembayaran
-
-<p></p>
-
-<h2 id="syarat">💾 Prasyarat yang Diperlukan</h2>
-
-Berikut adalah daftar layanan dan aplikasi yang wajib dan diperlukan selama anda menjalankan aplikasi sppie jika anda belum menginstall nya maka disarankan untuk menginstall nya terlebih dahulu
-
-- PHP 8 & Web Server [XAMPP, LAMPP, MAMP]
-- Web Browser [Chrome, Firefox, Safari & Opera]
-- Internet [Karena menggunakan banyak CDN]
-
-<p></p>
-
-<h2 id="kontribusi">🤝 Kontribusi</h2>
-
-Contributions, issues and feature requests sangat saya apresiasi karena aplikasi ini jauh dari kata sempurna. Jangan ragu untuk pull request dan membuat perubahan pada project ini.
-
-Berhubung Project ini saya selesaikan sendiri, namun banyak fitur dan banyak hal yang bisa diperbaiki maka bantuan kalian sangat saya apresiasi.
 
 <p></p>
 
