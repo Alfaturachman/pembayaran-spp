@@ -86,15 +86,6 @@ $ php artisan serve
 
 # Selamat aplikasi dapat anda nikmati di local!
 ```
-<p></p>
-
-<h2 id="dukungan">💌 Dukungan</h2>
-
-Kalian bisa mendukung saya di platform trakteer! Dukungan kalian akan sangat membantu untuk saya, namun dengan anda star project ini juga sudah sangat membantu lho!
-
-<p></p>
-
-<a href="https://trakteer.id/syaufy" target="_blank"><img id="wse-buttons-preview" src="https://cdn.trakteer.id/images/embed/trbtn-red-5.png" height="40" style="border:0px;height:40px;" alt="Trakteer Saya"></a>
 
 <p></p>
 
