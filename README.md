@@ -4,7 +4,7 @@
 
 <p></p>
 
-<h4 align="center">Website pembayaran SPP dalam rangka menyelesaikan UJIKOM 2021 yang dibuat dengan <a href="https://laravel.com/" target="_blank">Laravel</a>.
+<h4 align="center">Website pembayaran SPP yang dibuat dengan menggunakan <a href="https://laravel.com/" target="_blank">Laravel</a>.
 </h4>
 
 <p></p>
@@ -22,7 +22,6 @@
   <a href="#tentang">Tentang Project</a> •
   <a href="#fitur">Fitur</a> •
   <a href="#download">Download & Install</a> •
-  <a href="#dukungan">Dukungan</a> •
   <a href="#lisensi">Lisensi</a>
 </p>
 
@@ -30,7 +29,7 @@
 
 <h2 id="tentang">💸 Tentang Sppie</h2>
 
-Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, menjadi suatu studi kasus yang harus dipecahkan dalam rangka melaksanakan UJIKOM 2021.
+Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, menjadi suatu studi kasus yang harus dipecahkan.
 
 <p></p>
 
