@@ -33,6 +33,37 @@ Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, m
 
 <p></p>
 
+<h2 id="download">🐱‍💻 Panduan Menjalankan & Install Aplikasi</h2>
+
+Untuk menjalankan aplikasi atau web ini kamu harus install XAMPP atau web server lain dan mempunyai setidaknya satu web browser yang terinstall di komputer anda.
+
+```bash
+# Clone repository ini atau download di
+$ git clone https://github.com/syauqi/sppie.git
+
+# Kemudian jalankan command composer install, ini akan menginstall resources yang laravel butuhkan
+$ composer install
+
+# Lakukan copy .env dengan cara ketik command seperti dibawah 
+$ cp .env.example .env
+
+# Generate key juga jangan lupa dengan command dibawah
+$ php artisan key:generate
+
+# Jangan lupa migrate database dengan cara membuat database di phpmyadmin atau aplikasi lainnya yang kalian pakai,
+# lalu jangan lupa untuk mengganti variable DB_DATABASE di file .env yang di folder project
+$ php artisan migrate
+
+# Gunakan perintah berikut untuk menjalankan DatabaseSeeder tersimpan ke dalam database
+$ php artisan db:seed
+
+# Lalu jalankan aplikasi kalian dengan command dibawah
+$ php artisan serve
+
+# Selamat aplikasi dapat anda nikmati di local!
+```
+<p></p>
+
 <h2 id="lisensi">📝 Lisensi</h2>
 
 - Copyright © 2024 Alfaturachman Maulana Pahlevi
