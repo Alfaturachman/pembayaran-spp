@@ -17,11 +17,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username',
+        'nisn',
         'name',
+        'username',
         'email',
         'password',
+        'address',
+        'phone_number',
+        'class',
+        'roles',
     ];
+
+    /**
+     * Set password attribute safely.
+     */
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value)) {
+            $this->attributes['password'] = \Illuminate\Support\Str::startsWith($value, '$2y$') ? $value : bcrypt($value);
+        }
+    }
 
     /**
      * The attributes that should be hidden for arrays.

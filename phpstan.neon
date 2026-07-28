@@ -1,0 +1,17 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+
+    # Level 5 is a balanced strictness level for production Laravel apps
+    level: 5
+
+    ignoreErrors:
+
+    excludePaths:
+        - storage/*
+        - bootstrap/cache/*
+
+    checkMissingIterableValueType: false

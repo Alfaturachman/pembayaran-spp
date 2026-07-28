@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="SYAUQIZAIDAN KHAIRAN KHALAF">
+    <meta name="author" content="Alfaturachman Maulana Pahlevi">
     @include('includes.admin.style')
 </head>
 

@@ -77,7 +77,7 @@
                                 <h5 class="font-weight-normal text-muted-transparent">Silahkan login untuk masuk ke
                                     halaman dashboard.</h5>
                             </div>
-                            Sppie is made with <span class="text-danger">♥</span> by Syauqi
+                            Sppie is made with <span class="text-danger">♥</span> by Alfaturachman
                         </div>
                     </div>
                 </div>

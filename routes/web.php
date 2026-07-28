@@ -32,7 +32,7 @@ Route::get('/', function () {
     ->middleware(['guest']);
 
 Route::get('/tentang-kami', function () {
-    return view('/tentang-kami');
+    return view('tentang-kami');
 });
 
 Route::get('/faq', function () {

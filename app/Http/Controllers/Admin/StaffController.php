@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Users;
-
+use App\Models\User;
 
 class StaffController extends Controller
 {
@@ -16,7 +15,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $items = Users::where('roles', 'STAFF')->get();
+        $items = User::where('roles', 'STAFF')->get();
 
         return view('pages.admin.staff.index', [
             'items' => $items
@@ -41,9 +40,18 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
+            'phone_number' => 'nullable|string',
+            'address' => 'nullable|string',
+        ]);
 
-        Users::create($data);
+        $data['roles'] = 'STAFF';
+
+        User::create($data);
 
         return redirect()->route('data-petugas.index');
     }
@@ -56,7 +64,7 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        $item = Users::all()->findOrFail($id);
+        $item = User::where('roles', 'STAFF')->findOrFail($id);
 
         return view('pages.admin.staff.detail', [
             'item' => $item
@@ -71,7 +79,7 @@ class StaffController extends Controller
      */
     public function edit($id)
     {
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STAFF')->findOrFail($id);
 
         return view('pages.admin.staff.edit', [
             'item' => $item
@@ -87,8 +95,21 @@ class StaffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STAFF')->findOrFail($id);
+
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $id,
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6',
+            'phone_number' => 'nullable|string',
+            'address' => 'nullable|string',
+        ]);
+
+        if (empty($data['password'])) {
+            unset($data['password']);
+        }
+
         $item->update($data);
 
         return redirect()->route('data-petugas.index');
@@ -102,7 +123,7 @@ class StaffController extends Controller
      */
     public function destroy($id)
     {
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STAFF')->findOrFail($id);
         $item->delete();
         return redirect()->route('data-petugas.index');
     }

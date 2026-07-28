@@ -1,70 +1,105 @@
-<h1 align="center">Selamat datang di repository Sppie! 👋🏻</h1>
+# Pembayaran SPP - Enterprise Grade System
 
-![sppie-preview](https://user-images.githubusercontent.com/46257169/173158527-bd0e7039-4a6b-40cc-b2aa-94afe8039bcf.png)
+Aplikasi Sistem Informasi Pembayaran SPP Sekolah terintegrasi yang dibangun menggunakan **Laravel 8.x**, dirancang dengan standar arsitektur MVC, keamanan tinggi, pengujian otomatis, dan kesiapan deployment produksi (Docker & CI/CD).
 
-<p></p>
+---
 
-<h4 align="center">Website pembayaran SPP yang dibuat dengan menggunakan <a href="https://laravel.com/" target="_blank">Laravel</a>.
-</h4>
+## Fitur Utama
 
-<p></p>
+- **Otentikasi Multi-Role**: Portal terpisah dengan hak akses dinamis untuk Admin, Staff/Petugas, dan Student/Siswa.
+- **Manajemen Data Master**: Pengelolaan data Siswa, Petugas, Kelas, dan Tarif SPP per tahun ajaran.
+- **Transaksi Pembayaran SPP**: Pencatatan transaksi pembayaran SPP harian dengan validasi otomatis.
+- **Portal Log Siswa**: Siswa dapat memantau riwayat pembayaran pribadi dengan proteksi IDOR (*Insecure Direct Object Reference*).
+- **Keamanan Ketat**: Proteksi CSRF, validasi Mass Assignment, dan hashing password terenkripsi.
 
-<p align="center">
-  <a href="#tentang">Tentang Project</a> •
-  <a href="#fitur">Fitur</a> •
-  <a href="#lisensi">Lisensi</a>
-</p>
+---
 
-<p></p>
+## Dokumentasi Terstruktur (`docs/`)
 
-<h2 id="tentang">💸 Tentang Sppie</h2>
+Dokumentasi proyek ini terbagi secara mendalam pada folder `docs/`:
 
-Website ini berfungsi sebagai pembayaran SPP bagi para siswa di SMKN 1 Ciamis, menjadi suatu studi kasus yang harus dipecahkan.
+1. [01_PRD.md](docs/01_PRD.md) - Product Requirement Document & Spesifikasi Modul.
+2. [02_ARCHITECTURE.md](docs/02_ARCHITECTURE.md) - Arsitektur MVC, Sequence Diagram, & Flow Otentikasi.
+3. [03_API_ROUTES.md](docs/03_API_ROUTES.md) - Daftar Lengkap Route, Endpoint, & Middleware.
+4. [04_DATABASE_SCHEMA.md](docs/04_DATABASE_SCHEMA.md) - ERD, Skema Tabel (`users`, `classes`, `spp`, `payments`).
+5. [05_SECURITY_AND_AUDIT.md](docs/05_SECURITY_AND_AUDIT.md) - Laporan Keamanan, Audit Penanganan Bug, & Refactoring.
+6. [06_USER_GUIDE.md](docs/06_USER_GUIDE.md) - Panduan Operasional Penggunaan untuk Admin, Staff, dan Siswa.
 
-<p></p>
+---
 
-<h2 id="fitur">✨ Fitur Tersedia</h2>
+## Panduan Instalasi & Penggunaan Lokal
 
-- Autentikasi
-  - Autentikasi operator dan siswa [daftar dan login]
-- Pengelolaan Data SPP
-  - Siswa dapat melihat riwayat transaksi pembayaran SPP
-  - Operator dapat membuat transaksi dan mencetak pembayaran
+### Prasyarat
+- PHP >= 8.1
+- Composer >= 2.0
+- MySQL / MariaDB
+- Node.js & NPM (opsional untuk frontend assets)
 
-<p></p>
-
-<h2 id="download">🐱‍💻 Panduan Menjalankan & Install Aplikasi</h2>
-
-Untuk menjalankan aplikasi atau web ini kamu harus install XAMPP atau web server lain dan mempunyai setidaknya satu web browser yang terinstall di komputer anda.
-
+### Langkah Instalasi
 ```bash
-# Clone repository ini atau download di
-$ git clone https://github.com/syauqi/sppie.git
+# 1. Clone repository
+$ git clone https://github.com/Alfaturachman/pembayaran-spp.git
+$ cd pembayaran-spp
 
-# Kemudian jalankan command composer install, ini akan menginstall resources yang laravel butuhkan
+# 2. Install dependensi composer
 $ composer install
 
-# Lakukan copy .env dengan cara ketik command seperti dibawah 
+# 3. Salin environment file
 $ cp .env.example .env
 
-# Generate key juga jangan lupa dengan command dibawah
+# 4. Generate application key
 $ php artisan key:generate
 
-# Jangan lupa migrate database dengan cara membuat database di phpmyadmin atau aplikasi lainnya yang kalian pakai,
-# lalu jangan lupa untuk mengganti variable DB_DATABASE di file .env yang di folder project
-$ php artisan migrate
+# 5. Konfigurasi database pada .env, lalu jalankan migrasi & seeder
+$ php artisan migrate --seed
 
-# Gunakan perintah berikut untuk menjalankan DatabaseSeeder tersimpan ke dalam database
-$ php artisan db:seed
-
-# Lalu jalankan aplikasi kalian dengan command dibawah
+# 6. Jalankan server lokal
 $ php artisan serve
-
-# Selamat aplikasi dapat anda nikmati di local!
 ```
-<p></p>
 
-<h2 id="lisensi">📝 Lisensi</h2>
+Aplikasi dapat diakses melalui browser pada `http://localhost:8000`.
 
-- Copyright © 2024 Alfaturachman Maulana Pahlevi
-- Sppie adalah aplikasi web open-source yang berlisensi dibawah lisensi MIT
+---
+
+## Menjalankan dengan Docker
+
+Proyek ini telah dilengkapi dengan kontainerisasi Docker:
+
+```bash
+# Jalankan seluruh service (App, Nginx, MySQL, Redis)
+$ docker-compose up -d --build
+```
+
+Aplikasi akan berjalan di `http://localhost:8080`.
+
+---
+
+## Automated Testing
+
+Pengujian otomatis dapat dijalankan menggunakan PHPUnit:
+
+```bash
+# Jalankan Unit Test suite
+$ vendor/bin/phpunit --testsuite=Unit
+
+# Jalankan seluruh Test Suite
+$ vendor/bin/phpunit
+```
+
+---
+
+## Production Deployment
+
+Untuk deployment ke server produksi, gunakan skrip otomatisasi deployment:
+
+```bash
+$ chmod +x deploy.sh
+$ ./deploy.sh
+```
+
+---
+
+## Lisensi
+
+- Copyright (c) 2024 Alfaturachman Maulana Pahlevi
+- Berlisensi di bawah lisensi MIT open-source.

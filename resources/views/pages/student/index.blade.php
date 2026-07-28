@@ -84,4 +84,48 @@
 
 </section>
 
+<section class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-primary p-4">
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">NISN</th>
+                                <th scope="col">NAMA SISWA</th>
+                                <th scope="col">BULAN</th>
+                                <th scope="col">TAHUN</th>
+                                <th scope="col">TOTAL BAYAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($items as $item)
+                            <tr>
+                                <th>
+                                    {{ $item->nisn }}
+                                </th>
+                                <td>
+                                    {{ $item->name }}
+                                </td>
+                                <td>
+                                    {{ $item->month }}
+                                </td>
+                                <td>
+                                    {{ $item->year }}
+                                </td>
+                                <td>
+                                    {{ $item->total_payment }}
+                                </td>
+                            </tr>
+                            @empty
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 @endsection

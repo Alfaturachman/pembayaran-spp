@@ -30,9 +30,9 @@ class DatabaseSeeder extends Seeder
             'address' => 'Jl RA Kartini 26 Ventura Bldg Lt 8,Cilandak Barat',
             'phone_number' => '0217504417',
             'class' => 'XII — RPL',
-            'name' => 'Syauqizaidan Khairan Khalaf',
-            'username' => 'syauqi@sppie.com',
-            'email' => 'syauqi@sppie.com',
+            'name' => 'Siswa Utama',
+            'username' => 'siswa@sppie.com',
+            'email' => 'siswa@sppie.com',
             'password' => Hash::make('123456'),
             'roles' => 'STUDENT',
         ]);

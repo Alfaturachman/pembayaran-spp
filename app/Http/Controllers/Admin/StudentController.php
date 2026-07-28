@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 use App\Models\Classes;
-use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -17,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $items = Users::where('roles', 'STUDENT')->get();
+        $items = User::where('roles', 'STUDENT')->get();
 
         return view('pages.admin.student.index', [
             'items' => $items
@@ -31,7 +30,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classes = Classes::pluck('class_name');
+        $classes = Classes::pluck('class_name', 'class_name');
 
         return view('pages.admin.student.create', [
             'classes' => $classes,
@@ -46,9 +45,20 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'nisn' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:6',
+            'address' => 'nullable|string',
+            'phone_number' => 'nullable|string',
+            'class' => 'nullable|string',
+        ]);
 
-        Users::create($data);
+        $data['roles'] = 'STUDENT';
+
+        User::create($data);
 
         return redirect()->route('data-siswa.index');
     }
@@ -61,7 +71,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STUDENT')->findOrFail($id);
 
         return view('pages.admin.student.detail', [
             'item' => $item
@@ -76,7 +86,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STUDENT')->findOrFail($id);
 
         return view('pages.admin.student.edit', [
             'item' => $item
@@ -92,8 +102,23 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STUDENT')->findOrFail($id);
+
+        $data = $request->validate([
+            'nisn' => 'nullable|string|max:255',
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . $id,
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6',
+            'address' => 'nullable|string',
+            'phone_number' => 'nullable|string',
+            'class' => 'nullable|string',
+        ]);
+
+        if (empty($data['password'])) {
+            unset($data['password']);
+        }
+
         $item->update($data);
 
         return redirect()->route('data-siswa.index');
@@ -107,7 +132,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        $item = Users::findOrFail($id);
+        $item = User::where('roles', 'STUDENT')->findOrFail($id);
         $item->delete();
         return redirect()->route('data-siswa.index');
     }

@@ -41,7 +41,11 @@ class ClassController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'class_id' => 'required|string|max:255',
+            'class_name' => 'required|string|max:255',
+            'skill_competence' => 'required|string|max:255',
+        ]);
 
         Classes::create($data);
 
@@ -56,7 +60,7 @@ class ClassController extends Controller
      */
     public function show($id)
     {
-        $item = Classes::all()->findOrFail($id);
+        $item = Classes::findOrFail($id);
 
         return view('pages.admin.class.detail', [
             'item' => $item
@@ -87,7 +91,12 @@ class ClassController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'class_id' => 'required|string|max:255',
+            'class_name' => 'required|string|max:255',
+            'skill_competence' => 'required|string|max:255',
+        ]);
+
         $item = Classes::findOrFail($id);
         $item->update($data);
 

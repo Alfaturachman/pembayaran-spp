@@ -29,17 +29,17 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="nisn">NISN</label>
-                        <input id="nisn" type="text" class="form-control" value="{{ old('nisn') }}" name=" nisn">
+                        <input id="nisn" type="text" class="form-control" value="{{ old('nisn') }}" name="nisn">
                     </div>
                     <div class="form-group col-md-8">
                         <label for="name">NAMA</label>
-                        <input id="name" type="text" value="{{ old('name') }}" class=" form-control" name="name">
+                        <input id="name" type="text" value="{{ old('name') }}" class="form-control" name="name">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="username">USERNAME</label>
-                        <input id="username" type="text" value="{{ old('username') }}" class=" form-control"
+                        <input id="username" type="text" value="{{ old('username') }}" class="form-control"
                             name="username">
                     </div>
                     <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="form-group">
                     <label for="email">EMAIL</label>
-                    <input id="email" type="text" value="{{ old('email') }}" class=" form-control" name="email">
+                    <input id="email" type="text" value="{{ old('email') }}" class="form-control" name="email">
                 </div>
                 <div class="form-group">
                     <label for="alamat">ALAMAT</label>
@@ -58,7 +58,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="nomor_telepon">NOMOR TELEPON</label>
-                        <input id="nomor_telepon" type="number" value="{{ old('phone_number') }}"" class=" form-control"
+                        <input id="nomor_telepon" type="number" value="{{ old('phone_number') }}" class="form-control"
                             name="phone_number">
                     </div>
                     {{-- <div class="form-group col-md-6">

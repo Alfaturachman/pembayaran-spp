@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Payments;
-use Faker\Provider\ar_SA\Payment;
 
 class SppController extends Controller
 {
@@ -41,7 +40,15 @@ class SppController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'id_spp' => 'nullable|integer',
+            'id_user' => 'nullable|integer',
+            'nisn' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'month' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'total_payment' => 'required|numeric',
+        ]);
 
         Payments::create($data);
 
@@ -56,11 +63,11 @@ class SppController extends Controller
      */
     public function show($id)
     {
-        // $item = Users::all()->findOrFail($id);
+        $item = Payments::findOrFail($id);
 
-        // return view('pages.admin.staff.detail', [
-        //     'item' => $item
-        // ]);
+        return view('pages.admin.payment.detail', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -71,11 +78,11 @@ class SppController extends Controller
      */
     public function edit($id)
     {
-        // $item = Users::findOrFail($id);
+        $item = Payments::findOrFail($id);
 
-        // return view('pages.admin.staff.edit', [
-        //     'item' => $item
-        // ]);
+        return view('pages.admin.payment.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -87,11 +94,20 @@ class SppController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->all();
-        // $item = Users::findOrFail($id);
-        // $item->update($data);
+        $data = $request->validate([
+            'id_spp' => 'nullable|integer',
+            'id_user' => 'nullable|integer',
+            'nisn' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'month' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'total_payment' => 'required|numeric',
+        ]);
 
-        // return redirect()->route('data-petugas.index');
+        $item = Payments::findOrFail($id);
+        $item->update($data);
+
+        return redirect()->route('data-spp.index');
     }
 
     /**
@@ -102,7 +118,7 @@ class SppController extends Controller
      */
     public function destroy($id)
     {
-        $item = Payment::findOrFail($id);
+        $item = Payments::findOrFail($id);
         $item->delete();
         return redirect()->route('data-spp.index');
     }

@@ -5,17 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class Users extends User
 {
-    use HasFactory;
-
-    protected $fillable = [
-        'id', 'nisn', 'name', 'password', 'username', 'email',
-        'address', 'phone_number', 'class', 'roles'
-    ];
-
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
-    }
+    protected $table = 'users';
 }

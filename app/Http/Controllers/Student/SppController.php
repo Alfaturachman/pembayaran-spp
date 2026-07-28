@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Payments;
-use Faker\Provider\ar_SA\Payment;
 
 class SppController extends Controller
 {
@@ -17,7 +16,13 @@ class SppController extends Controller
      */
     public function index()
     {
-        $items = Payments::where('name', Auth::user()->name)->get();
+        $user = Auth::user();
+        $items = Payments::where('id_user', $user->id)
+            ->orWhere(function ($query) use ($user) {
+                if ($user->nisn) {
+                    $query->where('nisn', $user->nisn);
+                }
+            })->get();
 
         return view('pages.student.payment.index', [
             'items' => $items
@@ -31,7 +36,7 @@ class SppController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.payment.create');
+        return view('pages.student.payment.create');
     }
 
     /**
@@ -42,11 +47,21 @@ class SppController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate([
+            'id_spp' => 'nullable|integer',
+            'month' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'total_payment' => 'required|numeric',
+        ]);
+
+        $user = Auth::user();
+        $data['id_user'] = $user->id;
+        $data['nisn'] = $user->nisn ?? '';
+        $data['name'] = $user->name;
 
         Payments::create($data);
 
-        return redirect()->route('data-spp.index');
+        return redirect()->route('data-log-spp.index');
     }
 
     /**
@@ -57,11 +72,17 @@ class SppController extends Controller
      */
     public function show($id)
     {
-        // $item = Users::all()->findOrFail($id);
+        $user = Auth::user();
+        $item = Payments::where(function ($q) use ($user) {
+            $q->where('id_user', $user->id);
+            if ($user->nisn) {
+                $q->orWhere('nisn', $user->nisn);
+            }
+        })->findOrFail($id);
 
-        // return view('pages.admin.staff.detail', [
-        //     'item' => $item
-        // ]);
+        return view('pages.student.payment.detail', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -72,11 +93,17 @@ class SppController extends Controller
      */
     public function edit($id)
     {
-        // $item = Users::findOrFail($id);
+        $user = Auth::user();
+        $item = Payments::where(function ($q) use ($user) {
+            $q->where('id_user', $user->id);
+            if ($user->nisn) {
+                $q->orWhere('nisn', $user->nisn);
+            }
+        })->findOrFail($id);
 
-        // return view('pages.admin.staff.edit', [
-        //     'item' => $item
-        // ]);
+        return view('pages.student.payment.edit', [
+            'item' => $item
+        ]);
     }
 
     /**
@@ -88,11 +115,23 @@ class SppController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $data = $request->all();
-        // $item = Users::findOrFail($id);
-        // $item->update($data);
+        $user = Auth::user();
+        $item = Payments::where(function ($q) use ($user) {
+            $q->where('id_user', $user->id);
+            if ($user->nisn) {
+                $q->orWhere('nisn', $user->nisn);
+            }
+        })->findOrFail($id);
 
-        // return redirect()->route('data-petugas.index');
+        $data = $request->validate([
+            'month' => 'required|string|max:255',
+            'year' => 'required|string|max:255',
+            'total_payment' => 'required|numeric',
+        ]);
+
+        $item->update($data);
+
+        return redirect()->route('data-log-spp.index');
     }
 
     /**
@@ -103,8 +142,15 @@ class SppController extends Controller
      */
     public function destroy($id)
     {
-        $item = Payment::findOrFail($id);
+        $user = Auth::user();
+        $item = Payments::where(function ($q) use ($user) {
+            $q->where('id_user', $user->id);
+            if ($user->nisn) {
+                $q->orWhere('nisn', $user->nisn);
+            }
+        })->findOrFail($id);
+
         $item->delete();
-        return redirect()->route('data-spp.index');
+        return redirect()->route('data-log-spp.index');
     }
 }
