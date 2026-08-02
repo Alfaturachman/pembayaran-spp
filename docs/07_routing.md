@@ -6,7 +6,7 @@ Dokumen ini mencatat seluruh daftar route dan endpoint HTTP yang tersedia pada a
 
 ## 1. Route Publik & Autentikasi
 
-| Method | URI Path | Name | Controller Action | Middleware | Deskripsi |
+| Method | URI Path | Route Name | Controller Action | Middleware | Deskripsi |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `GET` | `/` | `index` | Closure | `guest` | Halaman landing page utama |
 | `GET` | `/auth` | - | Closure | `auth` | Redirection hub berdasarkan role pengguna |

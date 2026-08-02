@@ -6,7 +6,7 @@ Dokumen ini berisi panduan teknis dan operasional penggunaan aplikasi **Pembayar
 
 ## 1. Panduan Akses & Login
 
-1. Buka peramban (browser) dan akses alamat web aplikasi (e.g., `http://localhost/pembayaran-spp/public/login`).
+1. Buka peramban (browser) dan akses alamat web aplikasi (misal: `http://localhost/pembayaran-spp/public/login` atau URL server).
 2. Masukkan **Email / Username** dan **Password**.
 3. Klik tombol **Login**.
 4. Sistem akan secara otomatis mengarahkan Anda ke Dasbor sesuai peran (*Admin*, *Staff*, atau *Student*).
@@ -49,3 +49,12 @@ Dokumen ini berisi panduan teknis dan operasional penggunaan aplikasi **Pembayar
 2. Anda akan secara otomatis diarahkan ke `Dasbor Siswa`.
 3. Navigasi ke menu `Log SPP` (`/student/data-log-spp`).
 4. Anda dapat melihat daftar seluruh transaksi pembayaran SPP yang telah berhasil dibayarkan atas nama Anda.
+
+---
+
+## 5. Pertanyaan Sering Diajukan (FAQ)
+
+- **Lupa Password Siswa/Petugas?**  
+  Admin dapat melakukan reset password melalui menu `Data Siswa` atau `Data Petugas` dengan mengedit akun terkait dan memasukkan password baru.
+- **Bagaimana jika transaksi pembayaran salah input?**  
+  Admin atau Staff dapat menghapus entri transaksi yang keliru dari menu Data SPP lalu menginput ulang transaksi yang benar.
