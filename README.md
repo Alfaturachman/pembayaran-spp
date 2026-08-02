@@ -1,6 +1,6 @@
 # Pembayaran SPP - Enterprise Grade System
 
-Aplikasi Sistem Informasi Pembayaran SPP Sekolah terintegrasi yang dibangun menggunakan **Laravel 8.x**, dirancang dengan standar arsitektur MVC, keamanan tinggi, pengujian otomatis, dan kesiapan deployment produksi (Docker & CI/CD).
+Aplikasi Sistem Informasi Pembayaran SPP Sekolah terintegrasi yang dibangun menggunakan **Laravel 8.x**, dirancang dengan standar arsitektur MVC, keamanan tinggi, pengujian otomatis (PHPUnit), dan kesiapan deployment produksi (Docker & CI/CD GitHub Actions).
 
 ---
 
@@ -16,21 +16,25 @@ Aplikasi Sistem Informasi Pembayaran SPP Sekolah terintegrasi yang dibangun meng
 
 ## Dokumentasi Terstruktur (`docs/`)
 
-Dokumentasi proyek ini terbagi secara mendalam pada folder `docs/`:
+Dokumentasi proyek ini terbagi secara terstruktur pada folder `docs/`:
 
-1. [01_PRD.md](docs/01_PRD.md) - Product Requirement Document & Spesifikasi Modul.
-2. [02_ARCHITECTURE.md](docs/02_ARCHITECTURE.md) - Arsitektur MVC, Sequence Diagram, & Flow Otentikasi.
-3. [03_API_ROUTES.md](docs/03_API_ROUTES.md) - Daftar Lengkap Route, Endpoint, & Middleware.
-4. [04_DATABASE_SCHEMA.md](docs/04_DATABASE_SCHEMA.md) - ERD, Skema Tabel (`users`, `classes`, `spp`, `payments`).
-5. [05_SECURITY_AND_AUDIT.md](docs/05_SECURITY_AND_AUDIT.md) - Laporan Keamanan, Audit Penanganan Bug, & Refactoring.
-6. [06_USER_GUIDE.md](docs/06_USER_GUIDE.md) - Panduan Operasional Penggunaan untuk Admin, Staff, dan Siswa.
+1. [01_brd.md](docs/01_brd.md) - Business Requirement Document & Target Bisnis.
+2. [02_prd.md](docs/02_prd.md) - Product Requirement Document & User Stories.
+3. [03_srs.md](docs/03_srs.md) - Software Requirements Specification & Technical Limits.
+4. [04_architecture.md](docs/04_architecture.md) - Arsitektur MVC, Sequence Diagram, & Tech Stack.
+5. [05_database.md](docs/05_database.md) - ERD & Kamus Data (`users`, `classes`, `spp`, `payments`).
+6. [06_desain.md](docs/06_desain.md) - Panduan Desain & Style Guide UI.
+7. [07_routing.md](docs/07_routing.md) - Dokumentasi API Endpoint & Middleware.
+8. [08_testing.md](docs/08_testing.md) - QA Specification, Automated Testing & Results.
+9. [09_user_manual.md](docs/09_user_manual.md) - Panduan Operasional Pengguna/Admin.
+10. [10_deployment.md](docs/10_deployment.md) - Docker Setup, Environment (.env) & CI/CD Pipeline.
 
 ---
 
 ## Panduan Instalasi & Penggunaan Lokal
 
 ### Prasyarat
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer >= 2.0
 - MySQL / MariaDB
 - Node.js & NPM (opsional untuk frontend assets)
@@ -66,11 +70,11 @@ Aplikasi dapat diakses melalui browser pada `http://localhost:8000`.
 Proyek ini telah dilengkapi dengan kontainerisasi Docker:
 
 ```bash
-# Jalankan seluruh service (App, Nginx, MySQL, Redis)
+# Jalankan seluruh service (App, Nginx, MySQL)
 $ docker-compose up -d --build
 ```
 
-Aplikasi akan berjalan di `http://localhost:8080`.
+Aplikasi akan berjalan di `http://localhost:8000`.
 
 ---
 
@@ -79,10 +83,7 @@ Aplikasi akan berjalan di `http://localhost:8080`.
 Pengujian otomatis dapat dijalankan menggunakan PHPUnit:
 
 ```bash
-# Jalankan Unit Test suite
-$ vendor/bin/phpunit --testsuite=Unit
-
-# Jalankan seluruh Test Suite
+# Jalankan seluruh Test Suite (36 tests, 100% pass)
 $ vendor/bin/phpunit
 ```
 
